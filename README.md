@@ -3,3 +3,6 @@ NokiaRemote is a J2ME app (for Nokia 3510i however it should work on MIDP 1.0 co
 It connects over HTTP to the [backend server](https://github.com/meyskens/nokiaremote-backend) to send commands.
 
 This is a proof of concept, the code is not fully ready stable and secure. Use at own risk.
+
+## Demo
+- [Video on Twitter by Maartje](https://twitter.com/MaartjeME/status/1155889089083842560)
