@@ -23,8 +23,6 @@ public class HelloMIDlet extends MIDlet implements CommandListener {
     private Command okCommand;
     private Command exitCommand1;
     private Command selectCommand;
-    private Form form;
-    private StringItem stringItem;
     private List list;
 //</editor-fold>//GEN-END:|fields|0|
 
@@ -105,26 +103,16 @@ public class HelloMIDlet extends MIDlet implements CommandListener {
      */
     public void commandAction(Command command, Displayable displayable) {//GEN-END:|7-commandAction|0|7-preCommandAction
         // write pre-action user code here
-        if (displayable == form) {//GEN-BEGIN:|7-commandAction|1|19-preAction
-            if (command == exitCommand) {//GEN-END:|7-commandAction|1|19-preAction
+        if (displayable == list) {//GEN-BEGIN:|7-commandAction|1|34-preAction
+            if (command == List.SELECT_COMMAND) {//GEN-END:|7-commandAction|1|34-preAction
                 // write pre-action user code here
-//GEN-LINE:|7-commandAction|2|19-postAction
+                listAction();//GEN-LINE:|7-commandAction|2|34-postAction
                 // write post-action user code here
-            } else if (command == okCommand) {//GEN-LINE:|7-commandAction|3|24-preAction
+            } else if (command == exitCommand1) {//GEN-LINE:|7-commandAction|3|43-preAction
                 // write pre-action user code here
-//GEN-LINE:|7-commandAction|4|24-postAction
+                exitMIDlet();//GEN-LINE:|7-commandAction|4|43-postAction
                 // write post-action user code here
-            }//GEN-BEGIN:|7-commandAction|5|34-preAction
-        } else if (displayable == list) {
-            if (command == List.SELECT_COMMAND) {//GEN-END:|7-commandAction|5|34-preAction
-                // write pre-action user code here
-                listAction();//GEN-LINE:|7-commandAction|6|34-postAction
-                // write post-action user code here
-            } else if (command == exitCommand1) {//GEN-LINE:|7-commandAction|7|43-preAction
-                // write pre-action user code here
-                exitMIDlet();//GEN-LINE:|7-commandAction|8|43-postAction
-                // write post-action user code here
-            } else if (command == selectCommand) {//GEN-LINE:|7-commandAction|9|41-preAction
+            } else if (command == selectCommand) {//GEN-LINE:|7-commandAction|5|41-preAction
                 // write pre-action user code here
                 switch (list.getSelectedIndex()) {
                     case 0:
@@ -140,13 +128,14 @@ public class HelloMIDlet extends MIDlet implements CommandListener {
                         stopPreset();
                         break;
                 }
-//GEN-LINE:|7-commandAction|10|41-postAction
+//GEN-LINE:|7-commandAction|6|41-postAction
                 // write post-action user code here
-            }//GEN-BEGIN:|7-commandAction|11|7-postCommandAction
-        }//GEN-END:|7-commandAction|11|7-postCommandAction
+            }//GEN-BEGIN:|7-commandAction|7|7-postCommandAction
+        }//GEN-END:|7-commandAction|7|7-postCommandAction
         // write post-action user code here
-    }//GEN-BEGIN:|7-commandAction|12|
-//</editor-fold>//GEN-END:|7-commandAction|12|
+    }//GEN-BEGIN:|7-commandAction|8|43-postAction
+//</editor-fold>//GEN-END:|7-commandAction|8|43-postAction
+
 
 //<editor-fold defaultstate="collapsed" desc=" Generated Getter: exitCommand ">//GEN-BEGIN:|18-getter|0|18-preInit
     /**
@@ -164,40 +153,9 @@ public class HelloMIDlet extends MIDlet implements CommandListener {
     }
 //</editor-fold>//GEN-END:|18-getter|2|
 
-//<editor-fold defaultstate="collapsed" desc=" Generated Getter: form ">//GEN-BEGIN:|14-getter|0|14-preInit
-    /**
-     * Returns an initialized instance of form component.
-     *
-     * @return the initialized component instance
-     */
-    public Form getForm() {
-        if (form == null) {//GEN-END:|14-getter|0|14-preInit
-            // write pre-init user code here
-            form = new Form("NokiaRemote", new Item[]{getStringItem()});//GEN-BEGIN:|14-getter|1|14-postInit
-            form.addCommand(getExitCommand());
-            form.addCommand(getOkCommand());
-            form.setCommandListener(this);//GEN-END:|14-getter|1|14-postInit
-            // write post-init user code here
-        }//GEN-BEGIN:|14-getter|2|
-        return form;
-    }
-//</editor-fold>//GEN-END:|14-getter|2|
 
-//<editor-fold defaultstate="collapsed" desc=" Generated Getter: stringItem ">//GEN-BEGIN:|16-getter|0|16-preInit
-    /**
-     * Returns an initialized instance of stringItem component.
-     *
-     * @return the initialized component instance
-     */
-    public StringItem getStringItem() {
-        if (stringItem == null) {//GEN-END:|16-getter|0|16-preInit
-            // write pre-init user code here
-            stringItem = new StringItem("Hello", "Hello, World!");//GEN-LINE:|16-getter|1|16-postInit
-            // write post-init user code here
-        }//GEN-BEGIN:|16-getter|2|
-        return stringItem;
-    }
-//</editor-fold>//GEN-END:|16-getter|2|
+
+
 
 //<editor-fold defaultstate="collapsed" desc=" Generated Getter: okCommand ">//GEN-BEGIN:|23-getter|0|23-preInit
     /**
@@ -353,7 +311,7 @@ public class HelloMIDlet extends MIDlet implements CommandListener {
     public void callServer(String action) throws IOException {
 
         HttpConnection httpConn = null;
-        String url = "http://nokiaremote.maartje.dev/action=" + action;
+        String url = "http://nokiaremote.maartje.dev/action?action=" + action;
 
         InputStream is = null;
         OutputStream os = null;
@@ -429,7 +387,7 @@ public class HelloMIDlet extends MIDlet implements CommandListener {
     }
 
     private void stopPreset() {
-        System.out.println("stopPreset");
+        System.out.println("4");
         try {
             callServer("stop");
         } catch (IOException e) {
